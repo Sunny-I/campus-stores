@@ -4,15 +4,34 @@ Campus Stores is a Product Engineer work sample set at a fictional campus media 
 
 ## Run the app
 
-Open `index.html` in a modern browser. The app includes its scripts, styles, and icons and can run offline.
+Open `index.html` in a modern browser. The app uses the checked-in scripts, styles, and icons directly and can run offline.
 
-To serve it over local HTTP, run this from the repository folder and visit `http://localhost:8000`.
+To serve it over local HTTP, run this from the repository folder and visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
 
 ```sh
-python3 -m http.server 8000 --bind 127.0.0.1
+python -m http.server 8000 --bind 127.0.0.1
 ```
 
-Each browser stores its own sample shift locally when browser storage is available. **Restart sample shift** restores the fictional starting records.
+Use `python3` if that is the Python command on your system. When browser storage is available, one browser tab can save and resume a sample shift at the same address. Use one active tab per shift to avoid overwriting progress. **Restart sample shift** restores the fictional starting records.
+
+## Review the prototype
+
+In **Requests**, choose **Prepare pickup** on the Film Society request. Select the collector and the tagged units in hand, then issue them together. Each unit gets its own return slip. **View loans** takes you to that request’s outstanding slips.
+
+Use the desk overview to open shelf stock, outstanding slips, or overdue returns. In **Loan register**, search by asset tag, slip, request, or collector. After returning the projector and speaker, use **Write handover** on the outstanding adapter. On Saturday, use **View slip** from its Desk book note to check the tag before recording the return.
+
+The [submission walkthrough](docs/SUBMISSION_SUMMARY.md) includes the baseline evidence, exact demo steps, and the proposed observation at a real counter.
+
+## Run the checks
+
+From the repository folder, use Node.js 22 or newer to check the script and replay the shift through the app's event handlers.
+
+```sh
+node --check app.js
+node --test tests/shift.test.cjs
+```
+
+See the [verification report](docs/VERIFICATION_REPORT.md) for coverage and browser verification limits.
 
 ## Source
 
@@ -21,7 +40,6 @@ Each browser stores its own sample shift locally when browser storage is availab
 - `styles.css` defines the desktop and mobile layouts.
 
 Icon license notices are in [third-party/lucide-LICENSE.txt](third-party/lucide-LICENSE.txt).
-
 
 ## Submit your work
 

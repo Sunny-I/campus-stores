@@ -111,9 +111,10 @@
             <small>Desk time</small><strong data-clock></strong>
           </div>
         </header>
+        <section class="desk-overview" aria-label="Desk overview" data-overview></section>
         <aside class="shift">
           <div>
-            <b data-shift-title></b>
+            <h2 class="shift-title" data-shift-title></h2>
             <p data-shift></p>
           </div>
           <button type="button" data-action="advance"></button>
@@ -127,8 +128,8 @@
           ></section>
         </div>
         <div class="statusbar">
-          <span role="status" aria-live="polite" data-status></span
-          ><button type="button" data-action="restart">
+          <span role="status" aria-live="polite" data-status></span>
+          <button type="button" data-action="restart">
             Restart sample shift
           </button>
         </div>

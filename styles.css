@@ -1,13 +1,13 @@
 :root {
   color-scheme: light dark;
-  background: light-dark(#f0f2f1, #191e21);
+  background: light-dark(#f4eff6, #17121f);
 }
 body {
   margin: 0;
-  padding: clamp(10px, 3vw, 44px) clamp(6px, 3vw, 36px);
+  padding: clamp(8px, 3vw, 40px) clamp(8px, 3vw, 36px);
 }
 body > main {
-  max-width: 1060px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 .icon-library {
@@ -25,27 +25,35 @@ body > main {
 
 #campus-stores {
   color-scheme: light dark;
-  --ink: light-dark(#202c35, #ecf0f0);
-  --quiet: light-dark(#526370, #b9c5cb);
-  --paper: light-dark(#fff, #232a30);
-  --desk: light-dark(#f3f5f5, #1d2328);
-  --nav: light-dark(#eaf0f1, #29333b);
-  --sel: light-dark(#233e4c, #c5dce4);
-  --inv: light-dark(#fff, #172b34);
-  --line: light-dark(#d2dcdf, #475158);
-  --memo: light-dark(#fff3d8, #3d3426);
-  --memotxt: light-dark(#65491e, #ead4a5);
-  --mark: light-dark(#bd502f, #f2a585);
-  --ok: light-dark(#e3f1e8, #2d4838);
-  --oktxt: light-dark(#25523d, #bedac8);
+  /* Accents sampled from the Virinchi Hospitals logo. */
+  --brand-blue: #47b8da;
+  --brand-orchid: #a94f99;
+  --brand-magenta: #991159;
+  --brand-yellow: #e4e332;
+  --ink: light-dark(#291c33, #f8f1fa);
+  --quiet: light-dark(#63546e, #c9bcd3);
+  --paper: light-dark(#fff, #261e30);
+  --desk: light-dark(#f9f6fb, #211929);
+  --nav: light-dark(#f3edf7, #1c1627);
+  --sel: light-dark(#831657, #f1b5dd);
+  --sel-hover: light-dark(#661145, #ffd1ef);
+  --inv: light-dark(#fff, #351629);
+  --accent-soft: light-dark(#f8eaf4, #3b2740);
+  --line: light-dark(#e4dbe9, #493c53);
+  --control-line: light-dark(#9883a4, #897498);
+  --memo: light-dark(#fff8d9, #393017);
+  --memotxt: light-dark(#624a08, #f4e2a4);
+  --mark: light-dark(#176e93, #7ddcf4);
+  --info: light-dark(#e5f5fc, #1e344a);
+  --infotxt: light-dark(#1b5b7e, #aae7fa);
+  --ok: light-dark(#eff4d9, #303821);
+  --oktxt: light-dark(#434d14, #e7efad);
   background: var(--paper);
   color: var(--ink);
-  font:
-    14px/1.48 "Inter",
-    "Arial",
-    sans-serif;
+  font: 14px/1.55 system-ui, sans-serif;
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: 18px;
+  box-shadow: 0 20px 54px rgb(49 24 60 / 12%);
   overflow: hidden;
   container-type: inline-size;
 }
@@ -62,18 +70,17 @@ body > main {
   margin: 0;
 }
 #campus-stores h1 {
-  font:
-    600 clamp(24px, 4cqw, 33px)/1.13 "Archivo",
-    system-ui,
-    sans-serif;
-  letter-spacing: -0.05em;
+  font-size: clamp(30px, 4.2cqw, 42px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.045em;
 }
 #campus-stores h2 {
-  font-size: 20px;
+  font-size: 25px;
   letter-spacing: -0.03em;
 }
 #campus-stores h3 {
-  font-size: 15px;
+  font-size: 16px;
 }
 #campus-stores .muted,
 #campus-stores small {
@@ -90,7 +97,7 @@ body > main {
   flex-wrap: wrap;
   background: var(--desk);
   border-bottom: 1px solid var(--line);
-  padding: 9px 18px;
+  padding: 8px 24px;
   color: var(--quiet);
   font-size: 13px;
 }
@@ -120,18 +127,39 @@ body > main {
   gap: 10px;
 }
 #campus-stores .mast {
-  padding: 17px 20px;
+  position: relative;
+  background: radial-gradient(ellipse at 94% 0%, #6b315f, transparent 66%),
+    linear-gradient(112deg, #301736, #492040);
+  color: #fff7fd;
+  padding: 26px 28px 29px;
   justify-content: space-between;
   flex-wrap: wrap;
 }
+#campus-stores .mast::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 3px;
+  background: linear-gradient(to right,
+    var(--brand-blue) 0 20%, var(--brand-orchid) 20% 48%,
+    var(--brand-magenta) 48% 80%, var(--brand-yellow) 80%);
+}
+#campus-stores .mast :is(.muted, small) {
+  color: #ecd8eb;
+}
+#campus-stores .brandblock {
+  gap: 15px;
+}
 #campus-stores .brandmark {
-  background: var(--mark);
-  color: var(--inv);
-  width: 40px;
-  height: 40px;
+  background: #f9eaf5;
+  color: #831657;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
   display: grid;
   place-items: center;
-  border-radius: 9px;
+  border-radius: 13px;
 }
 #campus-stores .brandmark svg {
   width: 25px;
@@ -140,22 +168,92 @@ body > main {
 #campus-stores .clock {
   display: grid;
   text-align: right;
+  padding: 7px 12px;
+  background: rgb(43 19 49 / 34%);
+  border: 1px solid rgb(255 231 251 / 30%);
+  border-radius: 9px;
 }
 #campus-stores .clock strong {
   font-variant-numeric: tabular-nums;
 }
+#campus-stores .desk-overview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding: 16px 24px;
+}
+#campus-stores .overview-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 11px;
+  min-height: 83px;
+  padding: 10px 14px;
+  text-align: start;
+  border-radius: 12px;
+  background: var(--desk);
+}
+#campus-stores .overview-icon {
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  color: var(--sel);
+  background: var(--accent-soft);
+  border-radius: 10px;
+}
+#campus-stores .overview-card[data-val="on-shelf"] .overview-icon {
+  background: var(--info);
+  color: var(--infotxt);
+}
+#campus-stores .overview-card[data-val="overdue"] .overview-icon {
+  background: var(--memo);
+  color: var(--memotxt);
+}
+#campus-stores .overview-icon svg {
+  width: 18px;
+  height: 18px;
+}
+#campus-stores .overview-content {
+  display: grid;
+  gap: 4px;
+  color: var(--quiet);
+}
+#campus-stores .overview-content strong {
+  color: var(--ink);
+  font-size: 28px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+#campus-stores .overview-arrow {
+  color: var(--quiet);
+  font-size: 16px;
+}
+#campus-stores .overview-card.has-overdue {
+  border-color: var(--memotxt);
+}
+#campus-stores .has-overdue .overview-content strong {
+  color: var(--memotxt);
+}
 #campus-stores .shift {
   background: var(--memo);
   color: var(--memotxt);
-  padding: 12px 19px;
+  margin: 0 24px 16px;
+  padding: 12px 15px;
   justify-content: space-between;
-  border-block: 1px solid var(--line);
+  border: 1px solid var(--line);
+  border-inline-start: 4px solid var(--brand-yellow);
+  border-radius: 10px;
 }
 #campus-stores .shift div {
   max-width: 67ch;
 }
-#campus-stores .shift b {
-  font-size: 13px;
+#campus-stores .shift .shift-title {
+  font-size: 15px;
+  letter-spacing: normal;
+}
+#campus-stores .shift p {
+  margin-top: 3px;
 }
 #campus-stores .shift button {
   background: transparent;
@@ -170,15 +268,18 @@ body > main {
   font: inherit;
   color: var(--ink);
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 8px;
   background: var(--paper);
   min-width: 0;
-  padding: 7px 9px;
+  padding: 8px 11px;
 }
 #campus-stores button {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 650;
   cursor: pointer;
+}
+#campus-stores :is(select, input, textarea) {
+  border-color: var(--control-line);
 }
 #campus-stores button:hover {
   border-color: var(--sel);
@@ -188,22 +289,27 @@ body > main {
   color: var(--inv);
   border-color: var(--sel);
 }
-#campus-stores :is(button, input, textarea, select, summary):focus-visible {
+#campus-stores .primary:hover {
+  background: var(--sel-hover);
+  border-color: var(--sel-hover);
+}
+#campus-stores :is(button, input, textarea, select, summary, [tabindex="-1"]):focus-visible {
   outline: 3px solid var(--mark);
   outline-offset: 2px;
 }
 #campus-stores .shell {
   display: grid;
-  grid-template-columns: 155px minmax(0, 1fr);
-  min-height: 315px;
+  grid-template-columns: 176px minmax(0, 1fr);
+  min-height: 340px;
+  border-top: 1px solid var(--line);
 }
 #campus-stores nav {
   background: var(--nav);
   border-right: 1px solid var(--line);
-  padding: 12px 8px;
+  padding: 16px 10px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
 }
 #campus-stores nav button {
   display: flex;
@@ -212,11 +318,13 @@ body > main {
   text-align: left;
   border: 1px solid transparent;
   background: transparent;
-  font-weight: 500;
+  font-weight: 600;
 }
 #campus-stores nav button[aria-pressed="true"] {
-  background: var(--sel);
-  color: var(--inv);
+  background: var(--accent-soft);
+  color: var(--sel);
+  border-color: var(--line);
+  box-shadow: inset 3px 0 var(--sel);
 }
 #campus-stores nav svg {
   width: 16px;
@@ -224,7 +332,7 @@ body > main {
   flex-shrink: 0;
 }
 #campus-stores .page {
-  padding: 17px 17px 20px;
+  padding: 20px 24px 24px;
   min-width: 0;
 }
 #campus-stores .sectionhead,
@@ -233,7 +341,7 @@ body > main {
   flex-wrap: wrap;
 }
 #campus-stores .sectionhead {
-  margin-bottom: 12px;
+  margin-bottom: 18px;
 }
 #campus-stores .sectionhead small {
   margin-top: 2px;
@@ -245,32 +353,87 @@ body > main {
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 8px;
-  padding: 9px 0;
+  padding: 11px 0;
+}
+#campus-stores .request-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 12px;
+}
+#campus-stores .request-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--desk);
+}
+#campus-stores .request-reference {
+  font-weight: 650;
+}
+#campus-stores .request-card h3 {
+  margin: 4px 0 11px;
+  font-size: 18px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+#campus-stores :is(.request-meta, .request-actions) {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+#campus-stores .request-actions {
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
 }
 #campus-stores .row small,
 #campus-stores label span {
   display: block;
 }
+#campus-stores .slip-actions,
+#campus-stores .slip-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+#campus-stores .slip-actions {
+  justify-content: flex-end;
+}
 #campus-stores .tag {
-  background: var(--desk);
+  background: var(--nav);
   color: var(--quiet);
   font-size: 12px;
-  padding: 3px 7px;
-  border-radius: 5px;
+  font-weight: 650;
+  padding: 3px 8px;
+  border-radius: 6px;
   display: inline-block;
 }
 #campus-stores .good {
   background: var(--ok);
   color: var(--oktxt);
 }
+#campus-stores .overdue {
+  background: var(--memo);
+  color: var(--memotxt);
+}
 #campus-stores .record {
   margin-top: 14px;
-  padding: 12px 13px;
+  padding: 13px 15px;
   background: var(--desk);
-  border-left: 3px solid var(--sel);
+  border: 1px solid var(--line);
+  border-inline-start: 3px solid var(--sel);
+  border-radius: 9px;
 }
 #campus-stores .record p {
   margin-top: 5px;
+}
+#campus-stores .handover-note {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
 }
 #campus-stores .buttons {
   flex-wrap: wrap;
@@ -284,6 +447,38 @@ body > main {
   display: flex;
   gap: 6px;
   align-items: center;
+}
+#campus-stores .register-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 10px 14px;
+  margin-bottom: 10px;
+}
+#campus-stores .register-tools .buttons {
+  margin: 0;
+}
+#campus-stores .loan-search {
+  flex: 1 1 250px;
+  min-width: 0;
+  font-weight: 600;
+}
+#campus-stores .loan-search input {
+  width: 100%;
+  font-weight: 400;
+  margin-top: 4px;
+}
+#campus-stores .loan-count {
+  color: var(--quiet);
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+#campus-stores .empty-state {
+  color: var(--quiet);
+  background: var(--desk);
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  padding: 14px;
 }
 #campus-stores .form {
   display: grid;
@@ -303,6 +498,26 @@ body > main {
   width: 100%;
   font-weight: 400;
 }
+#campus-stores .pickup-items {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0 12px;
+}
+#campus-stores .pickup-items legend {
+  font-weight: 650;
+  padding: 0 5px;
+}
+#campus-stores .pickup-unavailable small {
+  display: block;
+}
+#campus-stores .form-error:not(:empty) {
+  background: var(--memo);
+  color: var(--memotxt);
+  padding: 8px 10px;
+  border-radius: 6px;
+}
 #campus-stores .full {
   grid-column: 1/-1;
 }
@@ -312,7 +527,7 @@ body > main {
 #campus-stores .statusbar {
   background: var(--desk);
   border-top: 1px solid var(--line);
-  padding: 8px 16px;
+  padding: 9px 24px;
   color: var(--quiet);
   font-size: 12px;
 }
@@ -328,39 +543,90 @@ body > main {
     grid-template-columns: minmax(0, 1fr);
   }
   #campus-stores nav {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     border-right: 0;
     border-bottom: 1px solid var(--line);
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 7px;
+    padding: 8px;
   }
   #campus-stores nav button {
+    justify-content: center;
     gap: 4px;
-    padding: 5px 7px;
+    padding: 8px 6px;
+    text-align: center;
+  }
+  #campus-stores nav button[aria-pressed="true"] {
+    box-shadow: inset 0 -3px var(--sel);
   }
   #campus-stores .shift {
     flex-wrap: wrap;
+    margin-inline: 12px;
   }
   #campus-stores .page {
-    padding: 14px 12px;
+    padding: 16px 12px;
   }
   #campus-stores .mast {
-    padding: 12px;
+    padding: 17px 12px 20px;
   }
   #campus-stores .examstrip,
-  #campus-stores .shift {
-    padding: 9px 12px;
+  #campus-stores .shift,
+  #campus-stores .desk-overview,
+  #campus-stores .statusbar {
+    padding: 10px 12px;
+  }
+  #campus-stores .overview-card {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 8px;
+  }
+  #campus-stores .overview-arrow {
+    display: none;
+  }
+}
+@container (max-width:540px) {
+  #campus-stores .request-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #campus-stores .desk-overview {
+    gap: 6px;
+  }
+  #campus-stores .overview-card {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 68px;
+    padding: 8px 6px;
+    text-align: center;
+  }
+  #campus-stores .overview-icon {
+    display: none;
   }
 }
 @container (max-width:420px) {
   #campus-stores .form {
     grid-template-columns: minmax(0, 1fr);
   }
-  #campus-stores .brandmark {
-    display: none;
+  #campus-stores .clock {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+  }
+  #campus-stores nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #campus-stores .overview-card {
+    font-size: 11px;
+  }
+  #campus-stores .overview-content strong {
+    font-size: 24px;
   }
   #campus-stores .row {
     gap: 5px;
+  }
+  #campus-stores .slip-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  #campus-stores .request-actions > button {
+    flex: 1 1 auto;
   }
 }
 @media (pointer: coarse) {
